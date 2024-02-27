@@ -19,6 +19,13 @@
 #define INVERT 1        // Invert pin polarity
 #define NORMAL 0        // Normal pin polarity
 
+typedef struct PCA9536Data {
+    bool bit0;
+    bool bit1;
+    bool bit2;
+    bool bit3;
+} PCA9536Data_t;
+
 class PCA9536
 {
     public:
@@ -28,11 +35,11 @@ class PCA9536
         bool begin(void);
         void reset(void);
 
-        bool read(void);
-        void write(bool);
-        
-        void invert(bool);
-        void config(bool);
+        bool read(PCA9536Data&);
+        void write(bool, bool, bool, bool);
+
+        void invert(bool, bool, bool, bool);
+        void config(bool, bool, bool, bool);
 };
 
 #endif

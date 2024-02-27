@@ -9,7 +9,7 @@ bool PCA9536::begin(void)
     Wire.begin();
     delay(100);
     Wire.beginTransmission(PCA_ADDRESS);
-    bool error = wire.endTransmission();
+    bool error = Wire.endTransmission();
     if(error == 0){
         Wire.beginTransmission(PCA_ADDRESS);
         Wire.write(POLARITY_INV);
@@ -40,20 +40,23 @@ void PCA9536::reset(void)
     Wire.endTransmission();
 }
 
-bool PCA9536::read(void)
+bool PCA9536::read(PCA9536Data_t &pcadata)
 {
     Wire.beginTransmission(PCA_ADDRESS);
     Wire.write(INPUT_PORT);
     Wire.endTransmission();
     Wire.requestFrom(PCA_ADDRESS, 1);
-    uint8_t incomingByte Wire.read();
-    bool bit0 bit1 bit2 bit3;
-    bit0 = static_cast<bool>((incomingByte & 0x01) >> 0);
-    bit1 = static_cast<bool>((incomingByte & 0x02) >> 1);
-    bit2 = static_cast<bool>((incomingByte & 0x04) >> 2);
-    bit3 = static_cast<bool>((incomingByte & 0x08) >> 3);
+    if(!Wire.available()){
+        return -1, -1, -1, -1;
+    }
+    uint8_t incomingByte = Wire.read();
+    bool bit0, bit1, bit2, bit3;
+    pcadata.bit0 = (incomingByte & 0x01);
+    pcadata.bit1 = (incomingByte & 0x02);
+    pcadata.bit2 = (incomingByte & 0x03);
+    pcadata.bit3 = (incomingByte & 0x04);
 
-    return bit0, bit1, bit2, bit3;
+    return pcadata.bit0, pcadata.bit1, pcadata.bit2, pcadata.bit3;
 }
 
 void PCA9536::write(bool bit0, bool bit1, bool bit2, bool bit3)

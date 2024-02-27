@@ -1,5 +1,5 @@
 {
-    "name": "DS MCP4018 Library",
+    "name": "DS PCA9536 Library",
     "version": "0.1.0",
     "description": "Arduino library for the PCA9536  I2C I/O expander",
     "keywords": "pca9536",
