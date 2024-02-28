@@ -2,7 +2,7 @@
 #include <DS_PCA9536.h>
 
 PCA9536 PCA;
-PCA9536Data_t pcadata;
+//PCA9536Data pcadata;
 
 void setup() {
   Serial.begin(115200);

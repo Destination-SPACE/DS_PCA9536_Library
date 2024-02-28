@@ -1,6 +1,6 @@
 {
     "name": "DS PCA9536 Library",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Arduino library for the PCA9536  I2C I/O expander",
     "keywords": "pca9536",
     "repository":

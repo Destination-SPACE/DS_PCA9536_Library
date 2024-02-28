@@ -4,6 +4,8 @@
 
 PCA9536::PCA9536(void){};
 
+PCA9536Data pcadata;
+
 bool PCA9536::begin(void)
 {
     Wire.begin();
@@ -40,7 +42,7 @@ void PCA9536::reset(void)
     Wire.endTransmission();
 }
 
-bool PCA9536::read(PCA9536Data_t &pcadata)
+bool PCA9536::read(PCA9536Data &pcadata)
 {
     Wire.beginTransmission(PCA_ADDRESS);
     Wire.write(INPUT_PORT);

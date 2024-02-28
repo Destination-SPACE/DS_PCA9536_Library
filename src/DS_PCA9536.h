@@ -1,5 +1,5 @@
 #ifndef DS_PCA9536_h
-#define DS_PCA9536
+#define DS_PCA9536_h
 
 #include "Arduino.h"
 #include <Wire.h>
@@ -19,12 +19,12 @@
 #define INVERT 1        // Invert pin polarity
 #define NORMAL 0        // Normal pin polarity
 
-typedef struct PCA9536Data {
+struct PCA9536Data {
     bool bit0;
     bool bit1;
     bool bit2;
     bool bit3;
-} PCA9536Data_t;
+};
 
 class PCA9536
 {
@@ -41,5 +41,7 @@ class PCA9536
         void invert(bool, bool, bool, bool);
         void config(bool, bool, bool, bool);
 };
+
+extern PCA9536Data pcadata;
 
 #endif
