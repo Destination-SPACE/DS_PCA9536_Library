@@ -36,12 +36,12 @@ class PCA9536
         void reset(void);
 
         bool read(PCA9536Data&);
-        void write(bool, bool, bool, bool);
+        void write(PCA9536Data&, PCA9536Data&, PCA9536Data&, PCA9536Data&);
 
         void invert(bool, bool, bool, bool);
         void config(bool, bool, bool, bool);
 };
 
-extern PCA9536Data pcadata;
+//extern PCA9536Data pcadata;
 
 #endif

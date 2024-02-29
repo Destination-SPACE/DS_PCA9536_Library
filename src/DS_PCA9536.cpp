@@ -4,7 +4,7 @@
 
 PCA9536::PCA9536(void){};
 
-PCA9536Data pcadata;
+//PCA9536Data pcadata;
 
 bool PCA9536::begin(void)
 {
@@ -52,7 +52,7 @@ bool PCA9536::read(PCA9536Data &pcadata)
         return -1, -1, -1, -1;
     }
     uint8_t incomingByte = Wire.read();
-    bool bit0, bit1, bit2, bit3;
+    PCA9536Data bit0, bit1, bit2, bit3;
     pcadata.bit0 = (incomingByte & 0x01);
     pcadata.bit1 = (incomingByte & 0x02);
     pcadata.bit2 = (incomingByte & 0x03);
