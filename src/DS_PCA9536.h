@@ -12,13 +12,6 @@
 #define POLARITY_INV 0x02   // Polarity Inversion register
 #define CONFIG 0x03         // Configuration register
 
-//Pin Values
-#define INPUT 1         // Set pin as an input
-#define OUTPUT 0        // Set pin as an output
-
-#define INVERT 1        // Invert pin polarity
-#define NORMAL 0        // Normal pin polarity
-
 struct PCA9536Data {
     bool bit0;
     bool bit1;
@@ -36,12 +29,10 @@ class PCA9536
         void reset(void);
 
         bool read(PCA9536Data&);
-        void write(PCA9536Data&, PCA9536Data&, PCA9536Data&, PCA9536Data&);
+        void write(bool, bool, bool, bool);
 
         void invert(bool, bool, bool, bool);
         void config(bool, bool, bool, bool);
 };
-
-//extern PCA9536Data pcadata;
 
 #endif
